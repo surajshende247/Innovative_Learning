@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".assignment.AssignmentDetail">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Assignment Instructions"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/txtAssignmentTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Assignment Title"
+                android:textColor="#000000"
+                android:textSize="22dp" />
+
+            <com.jsibbold.zoomage.ZoomageView
+                android:id="@+id/imageViewImageFullScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:zoomage_animateOnReset="true"
+                app:zoomage_autoCenter="true"
+                app:zoomage_autoResetMode="UNDER"
+                app:zoomage_maxScale="8"
+                app:zoomage_minScale="0.6"
+                app:zoomage_restrictBounds="false"
+                app:zoomage_translatable="true"
+                app:zoomage_zoomable="true" />
+
+
+            <TextView
+                android:id="@+id/txtInstructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Instructions will be shown here"
+                android:textColor="#000000"
+                android:textSize="18dp" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

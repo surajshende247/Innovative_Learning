@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".auth.Login">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/ico_lock" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/txtMobile"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/shapr_roundedsquare"
+        android:ems="10"
+        android:hint="Enter Mobile Number"
+        android:inputType="phone"
+        android:paddingLeft="10dp"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/txtError1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#F44336" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/shapr_roundedsquare"
+            android:ems="10"
+            android:hint="Enter Password"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+
+            android:textSize="25dp" />
+
+        <ImageView
+            android:id="@+id/imgPasswordToggle"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/ico_password_visible" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtError2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:textColor="#F44336" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="70dp"
+        android:background="#FF5722"
+        android:text="Login"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txtForgetPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:gravity="right"
+        android:padding="10dp"
+        android:text="Forget Password ?"
+        android:textColor="#000000"
+        android:textSize="20dp" />
+</LinearLayout>
