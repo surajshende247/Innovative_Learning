@@ -73,8 +73,9 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
 
         //for loader
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Loading Class");
+        progressDialog.setTitle("Marking Attendance");
         progressDialog.setMessage("Please wait");
+
 
         //shared preference details
         sharedpreferences = getSharedPreferences(my_preference, Context.MODE_PRIVATE);
@@ -93,9 +94,6 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         txtInstruction.setText(getIntent().getStringExtra("txtInstructions"));
 
 
-        //for blank attendance or absent
-        progressDialog.show();
-        addAttendance();
 
 
         btnPresent = findViewById(R.id.btnPresent);
@@ -105,8 +103,7 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
 
                 if(lectureComplete)
                 {
-                    progressDialog.setTitle("Marking Attendence");
-                    progressDialog.setMessage("Please wait");
+
                     progressDialog.show();
                     addAttendance();
                 }

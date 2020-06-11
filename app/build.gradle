@@ -62,6 +62,6 @@ dependencies {
     implementation 'com.jsibbold:zoomage:1.2.0'
 
     //for charts in android
-    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
 
 }

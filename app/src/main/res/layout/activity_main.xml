@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFE1D8"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.glide.slider.library.SliderLayout
         android:id="@+id/slider"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,9 +22,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3"
             android:text="Today's Learning"
-            android:textColor="#000000"
-            android:textSize="18dp" />
+            android:textColor="#FF5722"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -127,9 +134,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:shadowColor="#FFFFFF"
+            android:shadowDx="3"
+            android:shadowDy="3"
+            android:shadowRadius="3"
             android:text="Other Menus"
-            android:textColor="#000000"
-            android:textSize="18dp" />
+            android:textColor="#FF5722"
+            android:textSize="18dp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
