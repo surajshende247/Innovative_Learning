@@ -5,11 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,6 +25,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import app.iislearning.LectureData;
 import app.iislearning.MyClassesAdapter;
@@ -38,12 +43,19 @@ public class ShowDoubts extends AppCompatActivity {
     private RequestQueue mRequestQueue;
     private StringRequest mStringRequest;
     private String url = "http://gracecompusys.com/iis/getQueries.php";
+
+    //shared preference
+    SharedPreferences sharedpreferences;
+    public static final String my_preference = "login_details";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_doubts);
         recyclerView = findViewById(R.id.recyclerview_doubts);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        //shared preference details
+        sharedpreferences = getSharedPreferences(my_preference, Context.MODE_PRIVATE);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Please Wait...");
@@ -93,8 +105,14 @@ public class ShowDoubts extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //Log.i("TAG","Error :" + error.toString());
             }
-        });
-
+        }){
+            @Override
+            protected Map<String,String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<String,String>();
+                params.put("student_id",sharedpreferences.getString("student_id", ""));
+                return  params;
+            }
+        };
         mRequestQueue.add(mStringRequest);
     }
 }

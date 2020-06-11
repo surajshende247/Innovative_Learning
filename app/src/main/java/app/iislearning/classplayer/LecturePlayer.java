@@ -73,8 +73,8 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
 
         //for loader
         progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("Attendance");
-        progressDialog.setMessage("Please wait while collecting attendance...");
+        progressDialog.setTitle("Loading Class");
+        progressDialog.setMessage("Please wait");
 
         //shared preference details
         sharedpreferences = getSharedPreferences(my_preference, Context.MODE_PRIVATE);
@@ -92,7 +92,9 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         txtDescription.setText(getIntent().getStringExtra("txtDescription"));
         txtInstruction.setText(getIntent().getStringExtra("txtInstructions"));
 
+
         //for blank attendance or absent
+        progressDialog.show();
         addAttendance();
 
 
@@ -100,14 +102,17 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         btnPresent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addAttendance();
+
                 if(lectureComplete)
                 {
+                    progressDialog.setTitle("Marking Attendence");
+                    progressDialog.setMessage("Please wait");
                     progressDialog.show();
+                    addAttendance();
                 }
                 else
                 {
-
+                    Toast.makeText(getApplicationContext(),"Please Watch Complete Video",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -226,6 +231,7 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
                 params.put("student_id",sharedpreferences.getString("student_id", ""));
                 params.put("grade",sharedpreferences.getString("student_grade", ""));
                 params.put("subject",getIntent().getStringExtra("txtSubject"));
+                params.put("videoid",getIntent().getStringExtra("videoid"));
                 int attendanceRemark = lectureComplete ?1:0;
                 params.put("remark",attendanceRemark+"");
                 return  params;

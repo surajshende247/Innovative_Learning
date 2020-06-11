@@ -1,12 +1,16 @@
 package app.iislearning.assignment;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -25,6 +29,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import app.iislearning.MainActivity;
 import app.iislearning.R;
 import app.iislearning.askdoubts.MyDoubt;
 import app.iislearning.askdoubts.ShowDoubtsAdapter;
@@ -44,7 +49,6 @@ public class AllAssignments extends AppCompatActivity {
     //shared preference
     SharedPreferences sharedpreferences;
     public static final String my_preference = "login_details";
-    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,9 +62,14 @@ public class AllAssignments extends AppCompatActivity {
 
         //shared preference details
         sharedpreferences = getSharedPreferences(my_preference, Context.MODE_PRIVATE);
-        editor = sharedpreferences.edit();
 
 
+        /*asking for storage permission starts here*/
+        if (ContextCompat.checkSelfPermission(AllAssignments.this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
+        {
+            ActivityCompat.requestPermissions(AllAssignments.this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE },100);
+        }
+        /*asking for storage permission ends here*/
 
         sendAndRequestResponse();
         progressDialog.show();
@@ -82,7 +91,7 @@ public class AllAssignments extends AppCompatActivity {
                 try {
                     JSONArray arr = new JSONArray(jsonresponse);
                     for (int i = 0; i < arr.length(); i++) {
-                        Log.i("TAG","Response :" + arr.getJSONObject(i).getString("id"));
+                      //  Log.i("TAG","Response :" + arr.getJSONObject(i).getString("id"));
                         arrayListAssignment.add(new MyAssign(arr.getJSONObject(i).getString("id"),arr.getJSONObject(i).getString("student_id"), arr.getJSONObject(i).getString("assignment_id"), arr.getJSONObject(i).getString("stdimg_url"), arr.getJSONObject(i).getString("feedback"), arr.getJSONObject(i).getString("marks_obtained"), arr.getJSONObject(i).getString("upload_status"), arr.getJSONObject(i).getString("assignment_date"), arr.getJSONObject(i).getString("assignment_title"), arr.getJSONObject(i).getString("total_marks"),arr.getJSONObject(i).getString("teacherimg_url"),arr.getJSONObject(i).getString("instructions"),arr.getJSONObject(i).getString("subject"),arr.getJSONObject(i).getString("grade")));
                     }
                 } catch (JSONException e) {
@@ -98,14 +107,14 @@ public class AllAssignments extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
                 //Log.i("TAG","Error :" + error.toString());
             }
-        })        {
+        }){
             @Override
             protected Map<String,String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String,String>();
                 params.put("student_id",sharedpreferences.getString("student_id", ""));
                 return  params;
             }
-        };;
+        };
 
         mRequestQueue.add(mStringRequest);
     }

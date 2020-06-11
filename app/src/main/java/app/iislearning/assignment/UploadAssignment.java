@@ -24,9 +24,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 
@@ -88,7 +90,7 @@ public class UploadAssignment extends AppCompatActivity {
                 //if the tags edittext is empty
                 //we will throw input error
                 if (editTextTags.getText().toString().trim().isEmpty()) {
-                    editTextTags.setError("Enter tags first");
+                    editTextTags.setError("Enter some feedback");
                     editTextTags.requestFocus();
                     return;
                 }
@@ -193,8 +195,10 @@ public class UploadAssignment extends AppCompatActivity {
             }
         };
 
+        RetryPolicy mRetryPolicy = new DefaultRetryPolicy(0, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
         //adding the request to volley
-        Volley.newRequestQueue(this).add(volleyMultipartRequest);
+        Volley.newRequestQueue(this).add(volleyMultipartRequest).setRetryPolicy(mRetryPolicy);
     }
 
 }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.simplifiedlearning.androiduploadimage.MainActivity">
+    tools:context=".assignment.UploadAssignment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             android:layout_gravity="center"
             android:layout_margin="20dp"
             android:background="#FF5722"
-            android:text="Upload Assignment"
+            android:text="Select Assignment Image"
             android:textColor="#FFFFFF" />
 
     </LinearLayout>

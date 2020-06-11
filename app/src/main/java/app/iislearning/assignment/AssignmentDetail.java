@@ -25,14 +25,14 @@ public class AssignmentDetail extends AppCompatActivity {
         txtAssignmentInstructions.setText(getIntent().getStringExtra("instructions"));
         ImageZoomageView = findViewById(R.id.imageViewImageFullScreen);
 
-            try
-            {
-                Picasso.get().load(getIntent().getStringExtra("img")).into(ImageZoomageView);
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+                try
+                {
+                    Picasso.get().load(getIntent().getStringExtra("img")).into(ImageZoomageView);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
 
 
     }

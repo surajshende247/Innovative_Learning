@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1076236717162",
+    "firebase_url": "https://iislearning.firebaseio.com",
+    "project_id": "iislearning",
+    "storage_bucket": "iislearning.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1076236717162:android:59b56ca67863163e6cce13",
+        "android_client_info": {
+          "package_name": "app.iislearning"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1076236717162-qi7vkd0u4t2ueqa8u67n2ibqupqblbdg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "app.iislearning",
+            "certificate_hash": "b330ca1d453757186b5da42f8d079a5a5f8f77fb"
+          }
+        },
+        {
+          "client_id": "1076236717162-dv61ljt6t97mjkfm7g02pfhtrj02h2b8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKW-H4ZcPw6x3V6LE9ypRPzBYtDCl0sdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1076236717162-dv61ljt6t97mjkfm7g02pfhtrj02h2b8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

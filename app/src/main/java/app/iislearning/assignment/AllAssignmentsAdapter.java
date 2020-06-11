@@ -13,8 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import app.iislearning.R;
-import app.iislearning.askdoubts.MyDoubt;
-import app.iislearning.askdoubts.ShowDoubtsAdapter;
 
 public class AllAssignmentsAdapter extends RecyclerView.Adapter<AllAssignmentsAdapter.AllAssignmentsAdapterViewHolder> {
     ArrayList<MyAssign> arrayListMyAssign;
@@ -35,7 +33,15 @@ public class AllAssignmentsAdapter extends RecyclerView.Adapter<AllAssignmentsAd
         final MyAssign o = arrayListMyAssign.get(position);
         holder.txtTitle.setText(o.getAssignment_title());
         holder.txtSubject.setText(o.getSubject());
-        holder.txtMarks.setText(o.getMarks_obtained()+"/"+o.getTotal_marks());
+
+        if(o.getMarks_obtained().equals("NA")){
+            holder.txtMarks.setText("Not Evaluated");
+        }
+        else{
+            holder.txtMarks.setText(o.getMarks_obtained() + "/" + o.getTotal_marks());
+        }
+
+
         holder.txtDate.setText(o.getAssignment_date());
         if(o.getUpload_status().equals("1"))
         {
