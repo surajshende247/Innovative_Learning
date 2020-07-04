@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".stdprogress.TrackProgress"></activity>
+        <activity android:name=".helpguide.QuickGuide"></activity>
+        <activity android:name=".stdprogress.TrackProgress" />
         <activity android:name=".assignment.ViewSubmission" />
         <activity android:name=".assignment.UploadAssignment" />
         <activity android:name=".assignment.AssignmentDetail" />

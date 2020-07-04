@@ -13,8 +13,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -45,15 +50,17 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import app.iislearning.askdoubts.AddDoubt;
 import app.iislearning.askdoubts.ShowDoubts;
 import app.iislearning.assignment.AllAssignments;
+import app.iislearning.auth.Login;
 import app.iislearning.stdprogress.TrackProgress;
 
 
-public class MainActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener,   ViewPagerEx.OnPageChangeListener {
+public class MainActivity extends AppCompatActivity implements BaseSliderView.OnSliderClickListener,   ViewPagerEx.OnPageChangeListener  {
     private SliderLayout mDemoSlider;
 
     //for volly
@@ -70,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
 
         //shared preference details
         sharedpreferences = getSharedPreferences(my_preference, Context.MODE_PRIVATE);
@@ -227,6 +237,7 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
             @Override
             public void onEventAnimationEnd(ImageView button, boolean buttonState) {
                 spark_button3.setChecked(false);
+                Toast.makeText(MainActivity.this,"Coming soon...",Toast.LENGTH_LONG).show();
             }
             @Override
             public void onEventAnimationStart(ImageView button, boolean buttonState) {
@@ -319,6 +330,40 @@ public class MainActivity extends AppCompatActivity implements BaseSliderView.On
 
     }
 
+
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.logout:
+                editor.putString("Login", "false");
+                editor.putString("student_id","NA");
+                editor.putString("admission_no","NA");
+                editor.putString("student_grade","NA");
+                editor.putString("student_name","NA");
+                editor.putString("father_name","NA");
+                editor.putString("mother_name","NA");
+                editor.putString("surname","NA");
+                editor.putString("mobile_number1","NA");
+                editor.putString("mobile_number2","NA");
+                editor.commit();
+                Intent i = new Intent(MainActivity.this, Login.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY  | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
 
 
 }

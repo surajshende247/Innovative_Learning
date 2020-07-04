@@ -54,6 +54,8 @@ public class TrackProgress extends AppCompatActivity {
     //loader while login
     ProgressDialog progressDialog;
 
+    ArrayList att;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,30 +74,7 @@ public class TrackProgress extends AppCompatActivity {
         progressDialog.show();
         getProgress();
 
-        PieChart pieChart = findViewById(R.id.piechart);
 
-        ArrayList att = new ArrayList();
-        att.add(new Entry(80f, 0));
-        att.add(new Entry(20f, 1));
-
-        ArrayList att_status = new ArrayList();
-        att_status.add("Present");
-        att_status.add("Absent");
-
-
-        PieDataSet dataSet = new PieDataSet(att, "Online Presence for Classes");
-        PieData data = new PieData(att_status, dataSet);
-        pieChart.setData(data);
-
-        final int[] MY_COLORS = { Color.rgb(65,105,225), Color.rgb(255,0,0) };
-        ArrayList<Integer> colors = new ArrayList<>();
-        for(int c: MY_COLORS) colors.add(c);
-        dataSet.setColors(colors);
-
-        dataSet.setValueTextColor(Color.rgb(255,255,255));
-        dataSet.setValueTextSize(15f);
-        pieChart.setDescription("This is auto generate chart for attendance of your daily presence in online classes.");
-        pieChart.animateXY(5000, 5000);
     }
     private void getProgress() {
         //RequestQueue initialized
@@ -109,7 +88,31 @@ public class TrackProgress extends AppCompatActivity {
                 progressDialog.dismiss();
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    Log.i("TAG","Response :" + jsonObject.getString("attendance_percentage"));
+                    Log.i("TAG","Response :" +jsonObject.getString("attendance_percentage"));
+                    PieChart pieChart = findViewById(R.id.piechart);
+
+                    att = new ArrayList();
+
+
+                    ArrayList att_status = new ArrayList();
+                    att_status.add("Present");
+                    att_status.add("Absent");
+                    att.add(new Entry(Float.parseFloat(jsonObject.getString("attendance_percentage")), 0));
+                    att.add(new Entry(100f-Float.parseFloat(jsonObject.getString("attendance_percentage")), 1));
+
+                    PieDataSet dataSet = new PieDataSet(att, "Online Presence for Classes");
+                    PieData data = new PieData(att_status, dataSet);
+                    pieChart.setData(data);
+
+                    final int[] MY_COLORS = { Color.rgb(65,105,225), Color.rgb(255,0,0) };
+                    ArrayList<Integer> colors = new ArrayList<>();
+                    for(int c: MY_COLORS) colors.add(c);
+                    dataSet.setColors(colors);
+
+                    dataSet.setValueTextColor(Color.rgb(255,255,255));
+                    dataSet.setValueTextSize(15f);
+                    pieChart.setDescription("This is auto generate chart for attendance of your daily presence in online classes.");
+                    pieChart.animateXY(5000, 5000);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

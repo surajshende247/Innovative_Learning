@@ -136,7 +136,7 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
             player.setPlayerStyle(YouTubePlayer.PlayerStyle.MINIMAL);
             ytPlayer = player;
             AsyncTaskRunner runner = new AsyncTaskRunner();
-            runner.execute("15");
+            runner.execute("300");
         }
     }
 
@@ -213,8 +213,9 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         mStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response){
-                        progressDialog.dismiss();
 
+                        progressDialog.dismiss();
+                Log.i("TAG","Response :" + response.toString());
             }
         }, new Response.ErrorListener() {
             @Override

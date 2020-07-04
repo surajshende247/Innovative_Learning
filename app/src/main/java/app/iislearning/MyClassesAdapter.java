@@ -56,6 +56,8 @@ public class MyClassesAdapter extends RecyclerView.Adapter<MyClassesAdapter.MyCl
             }
         });
 
+
+
     }
 
     @Override
@@ -82,4 +84,6 @@ public class MyClassesAdapter extends RecyclerView.Adapter<MyClassesAdapter.MyCl
             cardLecture = itemView.findViewById(R.id.cardLecture);
         }
     }
+
+
 }

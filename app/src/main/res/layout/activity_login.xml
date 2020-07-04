@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE1D8"
+    android:background="@drawable/background1"
     android:orientation="vertical"
     tools:context=".auth.Login">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/ico_lock" />
+            android:background="@drawable/school_logo" />
     </LinearLayout>
 
     <EditText
@@ -26,13 +27,13 @@
         android:layout_height="50dp"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="50dp"
         android:background="@drawable/shapr_roundedsquare"
         android:ems="10"
         android:hint="Enter Mobile Number"
         android:inputType="phone"
         android:paddingLeft="10dp"
-        android:textSize="25dp" />
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/txtError1"
@@ -60,15 +61,13 @@
             android:inputType="textPassword"
             android:paddingLeft="10dp"
 
-            android:textSize="25dp" />
+            android:textSize="20dp" />
 
         <ImageView
             android:id="@+id/imgPasswordToggle"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_weight="1"
             android:src="@drawable/ico_password_visible" />
     </LinearLayout>
 
@@ -94,7 +93,7 @@
     <TextView
         android:id="@+id/txtForgetPassword"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="1dp"
         android:layout_marginTop="30dp"
         android:gravity="right"
         android:padding="10dp"

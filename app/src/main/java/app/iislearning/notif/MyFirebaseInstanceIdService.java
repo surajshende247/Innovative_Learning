@@ -7,23 +7,30 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.Locale;
+
 import app.iislearning.MainActivity;
+import app.iislearning.MyClasses;
 import app.iislearning.R;
 
-public class MyFirebaseInstanceIdService extends FirebaseMessagingService {
-
+public class MyFirebaseInstanceIdService extends FirebaseMessagingService  {
     @Override
     public void onMessageReceived(RemoteMessage message) {
         super.onMessageReceived(message);
         Context context = this;
+
+
 
         /**/
 
@@ -40,7 +47,22 @@ public class MyFirebaseInstanceIdService extends FirebaseMessagingService {
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(MyFirebaseInstanceIdService.this,"Channel1");
 
-            Intent notificationIntent = new Intent(context, MainActivity.class);
+            Intent notificationIntent;
+            if(message.getNotification().getTitle().equals("New Class Available"))
+            {
+                notificationIntent = new Intent(context, MyClasses.class);
+            }
+            else if(message.getNotification().getTitle().equals("New Update Is Available"))
+            {
+                String url = "https://play.google.com/store/apps/details?id=app.iislearning";
+                notificationIntent = new Intent(Intent.ACTION_VIEW);
+                notificationIntent.setData(Uri.parse(url));
+            }
+            else
+            {
+                notificationIntent = new Intent(context, MainActivity.class);
+            }
+
             notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             PendingIntent intent = PendingIntent.getActivity(context, 0, notificationIntent, 0);
             notification
@@ -52,6 +74,11 @@ public class MyFirebaseInstanceIdService extends FirebaseMessagingService {
                     .addAction(R.drawable.ico_notification,"Mark as read",intent)
                     .setDefaults(NotificationCompat.DEFAULT_ALL)
                     .setPriority(NotificationCompat.PRIORITY_MAX);
+
+
+
+
+
 
 
 
