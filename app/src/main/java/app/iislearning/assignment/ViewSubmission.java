@@ -21,7 +21,10 @@ public class ViewSubmission extends AppCompatActivity {
         txtFeedback = findViewById(R.id.txtFeedback);
         txtFeedback.setText(getIntent().getStringExtra("feedback"));
 
-        Picasso.get().load(getIntent().getStringExtra("imgurl")).into(imgAssignment);
+        Picasso.get()
+                .load(getIntent().getStringExtra("imgurl"))
+                .placeholder(R.drawable.loading_image)
+                .into(imgAssignment);
 
 
     }

@@ -88,15 +88,15 @@ public class AllAssignments extends AppCompatActivity {
                 Log.i("TAG","Response :" + response.toString());
 
                 String jsonresponse = response;
-                try {
-                    JSONArray arr = new JSONArray(jsonresponse);
-                    for (int i = 0; i < arr.length(); i++) {
-                      //  Log.i("TAG","Response :" + arr.getJSONObject(i).getString("id"));
-                        arrayListAssignment.add(new MyAssign(arr.getJSONObject(i).getString("id"),arr.getJSONObject(i).getString("student_id"), arr.getJSONObject(i).getString("assignment_id"), arr.getJSONObject(i).getString("stdimg_url"), arr.getJSONObject(i).getString("feedback"), arr.getJSONObject(i).getString("marks_obtained"), arr.getJSONObject(i).getString("upload_status"), arr.getJSONObject(i).getString("assignment_date"), arr.getJSONObject(i).getString("assignment_title"), arr.getJSONObject(i).getString("total_marks"),arr.getJSONObject(i).getString("teacherimg_url"),arr.getJSONObject(i).getString("instructions"),arr.getJSONObject(i).getString("subject"),arr.getJSONObject(i).getString("grade")));
+                    try {
+                        JSONArray arr = new JSONArray(jsonresponse);
+                        for (int i = 0; i < arr.length(); i++) {
+                          //  Log.i("TAG","Response :" + arr.getJSONObject(i).getString("id"));
+                            arrayListAssignment.add(new MyAssign(arr.getJSONObject(i).getString("id"),arr.getJSONObject(i).getString("student_id"), arr.getJSONObject(i).getString("assignment_id"), arr.getJSONObject(i).getString("stdimg_url"), arr.getJSONObject(i).getString("feedback"), arr.getJSONObject(i).getString("marks_obtained"), arr.getJSONObject(i).getString("upload_status"), arr.getJSONObject(i).getString("assignment_date"), arr.getJSONObject(i).getString("assignment_title"), arr.getJSONObject(i).getString("total_marks"),arr.getJSONObject(i).getString("teacherimg_url"),arr.getJSONObject(i).getString("instructions"),arr.getJSONObject(i).getString("subject"),arr.getJSONObject(i).getString("grade")));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
                 adapter = new AllAssignmentsAdapter(arrayListAssignment);
                 recyclerView.setAdapter(adapter);
                 progressDialog.dismiss();

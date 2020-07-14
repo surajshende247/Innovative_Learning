@@ -52,6 +52,7 @@ public class MyClassesAdapter extends RecyclerView.Adapter<MyClassesAdapter.MyCl
                 i.putExtra("txtUpload",o.getUploaded_date());
                 i.putExtra("txtDue",o.getDue_date());
                 i.putExtra("txtTeacher",o.getSubject_teacher());
+                i.putExtra("attendance",o.getAttendance());
                 v.getContext().startActivity(i);
             }
         });

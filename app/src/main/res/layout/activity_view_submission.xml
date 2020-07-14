@@ -31,8 +31,8 @@
             <ImageView
                 android:id="@+id/imgAssignment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_launcher_background" />
+                android:layout_height="300dp"
+                app:srcCompat="@drawable/loading_image" />
 
             <TextView
                 android:id="@+id/txtFeedback"

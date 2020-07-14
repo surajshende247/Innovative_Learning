@@ -92,11 +92,18 @@ public class LecturePlayer extends YouTubeBaseActivity implements YouTubePlayer.
         txtSubjectTeacher.setText("Instructor: "+getIntent().getStringExtra("txtTeacher"));
         txtDescription.setText(getIntent().getStringExtra("txtDescription"));
         txtInstruction.setText(getIntent().getStringExtra("txtInstructions"));
-
-
-
-
         btnPresent = findViewById(R.id.btnPresent);
+
+        Log.d("ATTENDANCE",getIntent().getStringExtra("attendance"));
+        if(getIntent().getStringExtra("attendance").equals("1"))
+        {
+            btnPresent.setBackgroundColor(Color.parseColor("#4CAF50"));
+        }
+
+
+
+
+
         btnPresent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

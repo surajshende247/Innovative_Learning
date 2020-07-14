@@ -16,14 +16,18 @@
         <EditText
             android:id="@+id/editTextTags"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter remark if any ..." />
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shapr_roundedsquare"
+            android:hint="Enter remark if any ..."
+            android:padding="5dp" />
 
         <ImageView
             android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@drawable/ic_launcher_background" />
+            android:layout_height="300dp"
+            tools:srcCompat="@drawable/loading_image" />
 
         <Button
             android:id="@+id/buttonUploadImage"

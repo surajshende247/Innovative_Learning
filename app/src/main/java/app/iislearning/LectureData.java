@@ -11,8 +11,9 @@ public class LectureData {
     String subject_teacher;
     String uploaded_date;
     String due_date;
+    String attendance;
 
-    public LectureData(String class_id, String class_subject, String class_grade, String class_title, String video_id, String class_description, String class_instructions, String subject_teacher, String uploaded_date, String due_date) {
+    public LectureData(String class_id, String class_subject, String class_grade, String class_title, String video_id, String class_description, String class_instructions, String subject_teacher, String uploaded_date, String due_date,String attendance) {
         this.class_id = class_id;
         this.class_subject = class_subject;
         this.class_grade = class_grade;
@@ -23,6 +24,7 @@ public class LectureData {
         this.subject_teacher = subject_teacher;
         this.uploaded_date = uploaded_date;
         this.due_date = due_date;
+        this.attendance = attendance;
     }
 
     public String getClass_id() {
@@ -103,5 +105,13 @@ public class LectureData {
 
     public void setDue_date(String due_date) {
         this.due_date = due_date;
+    }
+
+    public String getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(String attendance) {
+        this.attendance = attendance;
     }
 }

@@ -50,7 +50,8 @@ public class MyFirebaseInstanceIdService extends FirebaseMessagingService  {
             Intent notificationIntent;
             if(message.getNotification().getTitle().equals("New Class Available"))
             {
-                notificationIntent = new Intent(context, MyClasses.class);
+               // notificationIntent = new Intent(context, MyClasses.class);
+                return;
             }
             else if(message.getNotification().getTitle().equals("New Update Is Available"))
             {
@@ -88,9 +89,7 @@ public class MyFirebaseInstanceIdService extends FirebaseMessagingService  {
 
 
 
-        // Log.d("token",String.valueOf(R.string.fcm_token));
 
-        /**/
 
 
 

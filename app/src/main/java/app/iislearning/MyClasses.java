@@ -71,14 +71,14 @@ public class MyClasses extends AppCompatActivity {
         mStringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                //Log.i("TAG","Response :" + response.toString());
+                Log.i("TAG","Response :" + response.toString());
                 progressDialog.dismiss();
                 String jsonresponse = response;
                 try {
                     JSONArray arr = new JSONArray(jsonresponse);
                     for (int i = 0; i < arr.length(); i++) {
                      //   Log.i("TAG","Response :" + arr.getJSONObject(i).getString("class_subject"));
-                        arrayListLectures.add(new LectureData(arr.getJSONObject(i).getString("class_id"), arr.getJSONObject(i).getString("class_subject"), arr.getJSONObject(i).getString("class_grade"), arr.getJSONObject(i).getString("class_title"), arr.getJSONObject(i).getString("video_id"), arr.getJSONObject(i).getString("class_description"), arr.getJSONObject(i).getString("class_instructions"), arr.getJSONObject(i).getString("subject_teacher"), arr.getJSONObject(i).getString("uploaded_date"), arr.getJSONObject(i).getString("due_date")));
+                        arrayListLectures.add(new LectureData(arr.getJSONObject(i).getString("class_id"), arr.getJSONObject(i).getString("class_subject"), arr.getJSONObject(i).getString("class_grade"), arr.getJSONObject(i).getString("class_title"), arr.getJSONObject(i).getString("video_id"), arr.getJSONObject(i).getString("class_description"), arr.getJSONObject(i).getString("class_instructions"), arr.getJSONObject(i).getString("subject_teacher"), arr.getJSONObject(i).getString("uploaded_date"), arr.getJSONObject(i).getString("due_date"),arr.getJSONObject(i).getString("attendance")));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -97,6 +97,7 @@ public class MyClasses extends AppCompatActivity {
             protected Map<String,String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<String,String>();
                 params.put("class",sharedpreferences.getString("student_grade", ""));
+                params.put("student_id",sharedpreferences.getString("student_id", ""));
                 return  params;
             }
         };
